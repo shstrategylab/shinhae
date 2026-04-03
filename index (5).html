@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>신해전략연구소 · SHIN HAE Strategy Lab</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;600&family=Noto+Sans+KR:wght@300;400;500&family=IM+Fell+English:ital@1&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #0f0d0b;
+    --ink-mid: #2e2b27;
+    --ink-light: #5c5650;
+    --paper: #f5f1ea;
+    --paper-warm: #e8e0d0;
+    --paper-dark: #c0b8a8;
+    --gold: #7a5800;
+    --gold-light: #a87d20;
+    --red-seal: #7a1010;
+    --line: rgba(26,23,20,0.25);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    font-weight: 400;
+    line-height: 1.7;
+    min-height: 100vh;
+  }
+
+  /* Background texture */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      repeating-linear-gradient(0deg, transparent, transparent 28px, rgba(139,105,20,0.04) 28px, rgba(139,105,20,0.04) 29px);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .wrap { position: relative; z-index: 1; max-width: 860px; margin: 0 auto; padding: 0 2rem; }
+
+  /* ── HEADER ── */
+  header {
+    border-bottom: 1px solid var(--line);
+    padding: 2.5rem 0 2rem;
+    text-align: center;
+  }
+
+  .hanja-badge {
+    display: inline-block;
+    font-family: 'Noto Serif KR', serif;
+    font-size: 2.8rem;
+    font-weight: 300;
+    color: var(--red-seal);
+    letter-spacing: 0.15em;
+    margin-bottom: 0.4rem;
+    opacity: 0.85;
+  }
+
+  .lab-name-ko {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 1.05rem;
+    font-weight: 400;
+    color: var(--ink);
+    letter-spacing: 0.25em;
+    margin-bottom: 0.15rem;
+  }
+
+  .lab-name-en {
+    font-size: 0.72rem;
+    font-weight: 300;
+    color: var(--ink-light);
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    margin-bottom: 1.2rem;
+  }
+
+  .tagline {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 0.88rem;
+    color: var(--ink-mid);
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    line-height: 1.9;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    padding: 0.75rem 1rem;
+    display: inline-block;
+  }
+
+  /* ── NAV PILLS ── */
+  .nav-strip {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    padding: 1.4rem 0 0;
+  }
+
+  .nav-strip a {
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    color: var(--ink-mid);
+    text-decoration: none;
+    border: 1px solid var(--paper-dark);
+    padding: 0.3rem 0.9rem;
+    border-radius: 2px;
+    font-weight: 500;
+    transition: all 0.2s;
+  }
+
+  .nav-strip a:hover {
+    background: var(--paper-warm);
+    border-color: var(--gold-light);
+    color: var(--gold);
+  }
+
+  /* ── INTRO ── */
+  .intro-section {
+    padding: 3rem 0 2rem;
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    gap: 3rem;
+    align-items: start;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .intro-quote {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 0.9rem;
+    font-style: italic;
+    color: var(--ink-mid);
+    line-height: 2;
+    border-left: 2px solid var(--gold);
+    padding-left: 1.2rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .intro-text {
+    font-size: 0.88rem;
+    color: var(--ink-mid);
+    line-height: 2;
+  }
+
+  .identity-box {
+    background: var(--paper-warm);
+    border: 1px solid var(--paper-dark);
+    padding: 1.4rem 1.2rem;
+    text-align: center;
+  }
+
+  .identity-hanja {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 3.5rem;
+    font-weight: 300;
+    color: var(--red-seal);
+    opacity: 0.7;
+    line-height: 1;
+    margin-bottom: 0.6rem;
+  }
+
+  .identity-name {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 1rem;
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    margin-bottom: 0.2rem;
+  }
+
+  .identity-name-en {
+    font-size: 0.7rem;
+    color: var(--ink-light);
+    letter-spacing: 0.25em;
+    margin-bottom: 0.8rem;
+  }
+
+  .identity-desc {
+    font-size: 0.78rem;
+    color: var(--ink-mid);
+    line-height: 1.8;
+    border-top: 1px solid var(--line);
+    padding-top: 0.8rem;
+  }
+
+  /* ── SECTION HEADERS ── */
+  .section-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.3rem;
+    font-weight: 600;
+  }
+
+  .section-title {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 1.3rem;
+    font-weight: 300;
+    letter-spacing: 0.05em;
+    color: var(--ink);
+    margin-bottom: 1.8rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 1px solid var(--line);
+  }
+
+  /* ── ABOUT LINKS ── */
+  .about-section { padding: 2.5rem 0; border-bottom: 1px solid var(--line); }
+
+  .about-links { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+  .about-link {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.85rem 1.2rem;
+    border: 1px solid var(--paper-dark);
+    background: var(--paper-warm);
+    text-decoration: none;
+    color: var(--ink);
+    flex: 1;
+    min-width: 160px;
+    transition: all 0.2s;
+  }
+
+  .about-link:hover {
+    background: white;
+    border-color: var(--gold-light);
+    box-shadow: 2px 2px 0 var(--paper-dark);
+  }
+
+  .about-link-ko { font-family: 'Noto Serif KR', serif; font-size: 0.88rem; display: block; margin-bottom: 0.1rem; }
+  .about-link-sub { font-size: 0.7rem; color: var(--ink-light); letter-spacing: 0.12em; font-weight: 400; }
+
+  /* ── LAB CARDS ── */
+  .lab-section { padding: 2.5rem 0; border-bottom: 1px solid var(--line); }
+
+  .lab-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1px;
+    background: var(--paper-dark);
+    border: 1px solid var(--paper-dark);
+  }
+
+  .lab-card {
+    background: var(--paper);
+    padding: 1.3rem 1.2rem 1.1rem;
+    text-decoration: none;
+    color: var(--ink);
+    display: block;
+    transition: background 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .lab-card::after {
+    content: '→';
+    position: absolute;
+    bottom: 1rem;
+    right: 1.2rem;
+    font-size: 0.9rem;
+    color: var(--paper-dark);
+    transition: color 0.2s, transform 0.2s;
+  }
+
+  .lab-card:hover { background: var(--paper-warm); }
+  .lab-card:hover::after { color: var(--gold); transform: translateX(2px); }
+
+  .lab-card-status {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    color: var(--ink-light);
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  .lab-card-status.active { color: var(--gold); font-weight: 600; }
+
+  .lab-card-icon {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+
+  .lab-card-name { font-family: 'Noto Serif KR', serif; font-size: 0.92rem; font-weight: 400; margin-bottom: 0.2rem; }
+  .lab-card-name-en { font-size: 0.68rem; color: var(--ink-light); letter-spacing: 0.15em; margin-bottom: 0.5rem; }
+  .lab-card-desc { font-size: 0.8rem; color: var(--ink-mid); line-height: 1.75; }
+
+  .lab-card-no-link {
+    background: var(--paper);
+    padding: 1.3rem 1.2rem 1.1rem;
+    opacity: 0.55;
+    cursor: default;
+  }
+
+  /* ── BIZ SECTION ── */
+  .biz-section { padding: 2.5rem 0; border-bottom: 1px solid var(--line); }
+
+  .biz-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 1rem;
+  }
+
+  .biz-card {
+    border: 1px solid var(--paper-dark);
+    padding: 1.1rem 1rem;
+    background: var(--paper-warm);
+    text-decoration: none;
+    color: var(--ink);
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    transition: all 0.2s;
+    position: relative;
+  }
+
+  .biz-card:hover {
+    background: white;
+    border-color: var(--gold-light);
+    box-shadow: 2px 2px 0 var(--paper-dark);
+  }
+
+  .biz-card-name { font-family: 'Noto Serif KR', serif; font-size: 0.95rem; font-weight: 500; color: var(--ink); }
+  .biz-card-desc { font-size: 0.78rem; color: var(--ink-mid); font-weight: 400; }
+
+  .biz-coming {
+    border: 1px solid var(--paper-dark);
+    padding: 1.1rem 1rem;
+    background: var(--paper-warm);
+    opacity: 1;
+    cursor: default;
+  }
+
+  /* ── CONTACT ── */
+  .contact-section {
+    padding: 2.5rem 0 3rem;
+    text-align: center;
+  }
+
+  .contact-email {
+    font-size: 0.85rem;
+    color: var(--ink-mid);
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+  }
+
+  .contact-email a {
+    color: var(--gold);
+    text-decoration: none;
+    border-bottom: 1px solid var(--gold-light);
+    padding-bottom: 1px;
+    transition: opacity 0.2s;
+  }
+
+  .contact-email a:hover { opacity: 0.7; }
+
+  .contact-sub { font-size: 0.72rem; color: var(--ink-light); letter-spacing: 0.1em; }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--line);
+    padding: 1.5rem 0;
+    text-align: center;
+    font-size: 0.72rem;
+    color: var(--ink-light);
+    font-weight: 400;
+    letter-spacing: 0.1em;
+  }
+
+  /* ── DIVIDER ── */
+  .ornament {
+    text-align: center;
+    color: var(--gold-light);
+    font-size: 0.75rem;
+    letter-spacing: 0.5em;
+    margin: 0.5rem 0 1.5rem;
+    opacity: 0.6;
+  }
+
+  @media (max-width: 600px) {
+    .intro-section { grid-template-columns: 1fr; gap: 1.5rem; }
+    .identity-box { order: -1; }
+    .hanja-badge { font-size: 2rem; }
+    .lab-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <!-- HEADER -->
+  <header>
+    <div class="hanja-badge">辛亥</div>
+    <div class="lab-name-ko">신해전략연구소</div>
+    <div class="lab-name-en">Shin Hae Strategy Lab</div>
+    <div class="tagline">전통적 통찰과 첨단 AI 기술의 융합 · 지혜와 전략이 만나는 정점</div>
+    <nav class="nav-strip">
+      <a href="#about">소개</a>
+      <a href="#lab">연구 시스템</a>
+      <a href="#biz">비즈니스</a>
+      <a href="#contact">문의</a>
+    </nav>
+  </header>
+
+  <!-- INTRO -->
+  <section class="intro-section" id="about">
+    <div>
+      <p class="intro-quote">
+        "자기가 좋아하고 잘하는 것을 하면서<br>
+        나와 세상을 이롭게 한다면,<br>
+        그보다 더 좋은 일이 있을까."
+      </p>
+      <p class="intro-text">
+        수십 년간 쌓아온 명리학, 천부경, 무극의도의 지혜와 현대적 마케팅 전략, 기업 진단, AI 기술을 융합하여 개인과 조직 모두에 실질적인 통찰을 제공합니다.<br><br>
+        단순한 상담을 넘어, 후대에 남길 수 있는 지혜 시스템을 구축하는 것이 목표입니다. 아이디어가 흘러가지 않도록 저작물로 결실 맺고, 세상에 기여하며 사람을 모읍니다.
+      </p>
+    </div>
+    <div class="identity-box">
+      <div class="identity-hanja">辛亥</div>
+      <div class="identity-name">임 진 권</div>
+      <div class="identity-name-en">Lim Jin Kwon</div>
+      <p class="identity-desc">신해(辛亥)일주 특유의 날카로운 직관과 통찰력으로 전통 지혜와 현대 기술을 융합하는 연구자.</p>
+    </div>
+  </section>
+
+  <!-- ABOUT PAGES -->
+  <section style="padding: 2.5rem 0; border-bottom: 1px solid var(--line);">
+    <div class="section-label">Shinhae · 연구소</div>
+    <div class="section-title">연구소 안내</div>
+    <div class="about-links">
+      <a href="https://shstrategylab.github.io/shinhae/intro.html" target="_blank" class="about-link">
+        <div>
+          <span class="about-link-ko">연구소 소개</span>
+          <span class="about-link-sub">Introduction</span>
+        </div>
+      </a>
+      <a href="https://shstrategylab.github.io/shinhae/philosophy.html" target="_blank" class="about-link">
+        <div>
+          <span class="about-link-ko">철학</span>
+          <span class="about-link-sub">Philosophy</span>
+        </div>
+      </a>
+      <a href="https://shstrategylab.github.io/shinhae/vision.html" target="_blank" class="about-link">
+        <div>
+          <span class="about-link-ko">비전</span>
+          <span class="about-link-sub">Vision</span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- LAB SYSTEMS -->
+  <section class="lab-section" id="lab">
+    <div class="section-label">Lab · 연구 시스템</div>
+    <div class="section-title">개발된 지혜 시스템</div>
+    <div class="ornament">· · · ◆ · · ·</div>
+    <div class="lab-grid">
+
+      <a href="https://mugukdo.github.io/81code/" target="_blank" class="lab-card">
+        <div class="lab-card-status active">운영중</div>
+        <span class="lab-card-icon">☯</span>
+        <div class="lab-card-name">천부경 81코드</div>
+        <div class="lab-card-name-en">81code</div>
+        <div class="lab-card-desc">한민족 최고(最古) 경전 천부경을 현대적으로 해석한 지혜 시스템.</div>
+      </a>
+
+      <a href="https://mugukdo.github.io/muguk/" target="_blank" class="lab-card">
+        <div class="lab-card-status active">운영중</div>
+        <span class="lab-card-icon">∞</span>
+        <div class="lab-card-name">무극의도</div>
+        <div class="lab-card-name-en">Mugukdo</div>
+        <div class="lab-card-desc">무극의 원리를 통해 삶의 방향성과 흐름을 탐구하는 연구.</div>
+      </a>
+
+      <div class="lab-card-no-link lab-card">
+        <div class="lab-card-status">AI 보고서 완성</div>
+        <span class="lab-card-icon">🔮</span>
+        <div class="lab-card-name">사주팔자 AI 진단</div>
+        <div class="lab-card-name-en">Saju Diagnosis</div>
+        <div class="lab-card-desc">명리학 이론을 AI 프롬프트로 정밀 구현. 개인 맞춤형 분석 보고서.</div>
+      </div>
+
+      <a href="https://karma-lac.vercel.app/" target="_blank" class="lab-card">
+        <div class="lab-card-status">업그레이드중</div>
+        <span class="lab-card-icon">🧬</span>
+        <div class="lab-card-name">카르마코드</div>
+        <div class="lab-card-name-en">Karma Code</div>
+        <div class="lab-card-desc">업(業)과 인연의 흐름을 분석해 삶의 패턴과 방향성을 진단.</div>
+      </a>
+
+      <a href="https://wapmaster-murex.vercel.app/" target="_blank" class="lab-card">
+        <div class="lab-card-status">업그레이드중</div>
+        <span class="lab-card-icon">🧠</span>
+        <div class="lab-card-name">언행심리 WAP</div>
+        <div class="lab-card-name-en">Word & Action Psychology</div>
+        <div class="lab-card-desc">언어 패턴과 행동 심리를 분석해 내면 구조와 대인관계 역학을 진단.</div>
+      </a>
+
+      <a href="https://sasang-project.vercel.app/" target="_blank" class="lab-card">
+        <div class="lab-card-status">업그레이드중</div>
+        <span class="lab-card-icon">⚕</span>
+        <div class="lab-card-name">사상체질 진단</div>
+        <div class="lab-card-name-en">Sasang Constitution</div>
+        <div class="lab-card-desc">이제마의 사상의학을 현대적으로 재해석. 체질별 맞춤 솔루션.</div>
+      </a>
+
+      <div class="lab-card-no-link lab-card">
+        <div class="lab-card-status">개발중</div>
+        <span class="lab-card-icon">🪞</span>
+        <div class="lab-card-name">자기객관화</div>
+        <div class="lab-card-name-en">Self-Objectification</div>
+        <div class="lab-card-desc">자신을 객관적으로 바라보고 실제적 자아를 발견하는 시스템.</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- BIZ -->
+  <section class="biz-section" id="biz">
+    <div class="section-label">Biz · 비즈니스</div>
+    <div class="section-title">전략 서비스</div>
+    <div class="biz-grid">
+      <div class="biz-card biz-coming">
+        <div class="biz-card-name">인사이트</div>
+        <div class="biz-card-desc">깊이 있는 분석과 통찰 제공</div>
+      </div>
+      <div class="biz-card biz-coming">
+        <div class="biz-card-name">기업진단</div>
+        <div class="biz-card-desc">조직과 경영 구조 진단</div>
+      </div>
+      <div class="biz-card biz-coming">
+        <div class="biz-card-name">마케팅진단</div>
+        <div class="biz-card-desc">마케팅 전략 분석 및 개선</div>
+      </div>
+      <div class="biz-card biz-coming">
+        <div class="biz-card-name">소기업마케팅</div>
+        <div class="biz-card-desc">소상공인 맞춤 마케팅 전략</div>
+      </div>
+      <div class="biz-card biz-coming">
+        <div class="biz-card-name">트렌드보고서</div>
+        <div class="biz-card-desc">시장 흐름과 미래 방향 분석</div>
+      </div>
+    </div>
+    <p style="margin-top: 1.2rem; font-size: 0.74rem; color: var(--ink-light); letter-spacing: 0.05em;">· 순차적으로 오픈 예정</p>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact-section" id="contact">
+    <div class="section-label" style="text-align:center; margin-bottom: 0.8rem;">Contact · 문의</div>
+    <p class="contact-email">상담, 협업, 강의 문의 → <a href="mailto:egle707@gmail.com">egle707@gmail.com</a></p>
+    <p class="contact-sub">진지한 인연은 언제나 귀합니다</p>
+  </section>
+
+  <footer>
+    Copyright 2025. 신해전략연구소(SHIN HAE Strategy Lab) · 임진권. All rights reserved.
+  </footer>
+
+</div>
+</body>
+</html>
