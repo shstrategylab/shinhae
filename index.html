@@ -414,6 +414,38 @@
     .hanja-badge { font-size: 2rem; }
     .lab-grid { grid-template-columns: 1fr; }
   }
+
+ /* 인장 스타일 辛亥 배지 */
+ .hanja-badge--seal {
+   display: inline-flex;
+   gap: 6px;
+   margin-bottom: 0.8rem;
+ }
+ 
+ .seal-char {
+   display: inline-flex;
+   align-items: center;
+   justify-content: center;
+   width: 64px;
+   height: 64px;
+   font-family: 'Noto Serif KR', serif;
+   font-size: 2.6rem;
+   font-weight: 700;
+   line-height: 1;
+ }
+ 
+ .seal-char--light {
+   background: #ffffff;
+   color: #0f0d0b;
+   border: 2px solid #0f0d0b;
+ }
+ 
+ .seal-char--dark {
+   background: #2e2b27;
+   color: #ffffff;
+   border: 2px solid #2e2b27;
+ }
+ 
 </style>
 </head>
 <body>
@@ -422,7 +454,10 @@
 
   <!-- HEADER -->
   <header>
-    <div class="hanja-badge">辛亥</div>
+    <div class="hanja-badge hanja-badge--seal">
+    <span class="seal-char seal-char--light">辛</span>
+    <span class="seal-char seal-char--dark">亥</span>
+    </div>
     <div class="lab-name-ko">신해전략연구소</div>
     <div class="lab-name-en">Shin Hae Strategy Lab</div>
     <div class="tagline">전통적 통찰과 첨단 AI 기술의 융합 · 지혜와 전략이 만나는 정점</div>
