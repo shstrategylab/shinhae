@@ -1,0 +1,1354 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>해보기나 했어? — 정주영의 삶</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;700;900&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #1a1209;
+    --gold: #b8922a;
+    --gold-light: #e8c96a;
+    --rust: #8b3a1a;
+    --cream: #f5f0e8;
+    --parchment: #ede6d6;
+    --warm-gray: #3d3830;
+    --dark-brown: #2c1f0e;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 400;
+    line-height: 1.8;
+    overflow-x: hidden;
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    background: var(--dark-brown);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    padding: 4rem 2rem;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 40px,
+      rgba(184,146,42,0.03) 40px,
+      rgba(184,146,42,0.03) 41px
+    );
+  }
+
+  .hero-year {
+    font-family: 'Noto Serif KR', serif;
+    font-size: clamp(6rem, 20vw, 14rem);
+    font-weight: 900;
+    color: rgba(184,146,42,0.12);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    white-space: nowrap;
+    letter-spacing: -0.05em;
+    user-select: none;
+    pointer-events: none;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 700px;
+  }
+
+  .hero-label {
+    font-size: 0.75rem;
+    letter-spacing: 0.3em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+    font-weight: 500;
+  }
+
+  .hero-title {
+    font-family: 'Noto Serif KR', serif;
+    font-size: clamp(3rem, 10vw, 7rem);
+    font-weight: 900;
+    color: var(--cream);
+    line-height: 1.05;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.02em;
+  }
+
+  .hero-title span {
+    color: var(--gold-light);
+    display: block;
+  }
+
+  .hero-sub {
+    font-size: 1rem;
+    color: rgba(245,240,232,0.85);
+    max-width: 420px;
+    margin: 0 auto 3rem;
+    line-height: 2;
+  }
+
+  .hero-divider {
+    width: 60px;
+    height: 1px;
+    background: var(--gold);
+    margin: 0 auto 2rem;
+    opacity: 0.6;
+  }
+
+  .hero-dates {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 0.95rem;
+    color: rgba(184,146,42,0.7);
+    letter-spacing: 0.15em;
+  }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: rgba(245,240,232,0.3);
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  .scroll-hint::after {
+    content: '';
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, rgba(184,146,42,0.5), transparent);
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 1; }
+  }
+
+  /* INTRO QUOTE */
+  .intro-section {
+    background: var(--parchment);
+    padding: 6rem 2rem;
+    text-align: center;
+    position: relative;
+  }
+
+  .intro-section::before {
+    content: '鄭';
+    position: absolute;
+    font-family: 'Noto Serif KR', serif;
+    font-size: 20rem;
+    font-weight: 900;
+    color: rgba(139,58,26,0.04);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+
+  .big-quote {
+    font-family: 'Noto Serif KR', serif;
+    font-size: clamp(1.8rem, 5vw, 3.2rem);
+    font-weight: 700;
+    color: var(--dark-brown);
+    max-width: 700px;
+    margin: 0 auto 2.5rem;
+    line-height: 1.5;
+    position: relative;
+    z-index: 1;
+  }
+
+  .big-quote em {
+    color: var(--rust);
+    font-style: normal;
+    border-bottom: 3px solid var(--gold);
+    padding-bottom: 2px;
+  }
+
+  .quote-attr {
+    font-size: 0.95rem;
+    color: var(--warm-gray);
+    letter-spacing: 0.15em;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* SAJU BRIDGE SECTION */
+  .saju-bridge {
+    background: var(--ink);
+    padding: 6rem 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .saju-bridge::after {
+    content: '命';
+    position: absolute;
+    font-family: 'Noto Serif KR', serif;
+    font-size: 22rem;
+    font-weight: 900;
+    color: rgba(184,146,42,0.05);
+    right: -2rem;
+    bottom: -3rem;
+    pointer-events: none;
+    line-height: 1;
+  }
+
+  .saju-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .saju-eyebrow {
+    font-size: 0.7rem;
+    letter-spacing: 0.35em;
+    color: var(--gold);
+    text-transform: uppercase;
+    font-weight: 500;
+    display: block;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+
+  .saju-headline {
+    font-family: 'Noto Serif KR', serif;
+    font-size: clamp(1.8rem, 5vw, 3rem);
+    font-weight: 900;
+    color: var(--cream);
+    text-align: center;
+    line-height: 1.4;
+    margin-bottom: 1rem;
+  }
+
+  .saju-headline .gold { color: var(--gold-light); }
+  .saju-headline .muted { color: rgba(245,240,232,0.4); font-weight: 300; }
+
+  .saju-divider {
+    width: 40px;
+    height: 2px;
+    background: var(--gold);
+    margin: 2rem auto;
+    opacity: 0.5;
+  }
+
+  .saju-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: rgba(184,146,42,0.15);
+    border: 1px solid rgba(184,146,42,0.15);
+    margin-bottom: 3.5rem;
+  }
+
+  .saju-card {
+    background: rgba(26,18,9,0.95);
+    padding: 2rem 1.8rem;
+    position: relative;
+  }
+
+  .saju-card-icon {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 2rem;
+    font-weight: 900;
+    color: rgba(184,146,42,0.25);
+    display: block;
+    margin-bottom: 1rem;
+    line-height: 1;
+  }
+
+  .saju-card-title {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--gold-light);
+    margin-bottom: 0.6rem;
+    line-height: 1.4;
+  }
+
+  .saju-card-text {
+    font-size: 0.95rem;
+    color: rgba(245,240,232,0.5);
+    line-height: 1.9;
+  }
+
+  .saju-main-quote {
+    border: 1px solid rgba(184,146,42,0.25);
+    padding: 2.5rem 2.5rem;
+    position: relative;
+    text-align: center;
+    background: rgba(184,146,42,0.04);
+  }
+
+  .saju-main-quote::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 2.5rem; right: 2.5rem;
+    height: 2px;
+    background: var(--gold);
+    opacity: 0.5;
+  }
+
+  .saju-main-quote p {
+    font-family: 'Noto Serif KR', serif;
+    font-size: clamp(1rem, 2.5vw, 1.3rem);
+    color: var(--cream);
+    line-height: 2;
+    font-weight: 400;
+  }
+
+  .saju-main-quote p em {
+    color: var(--gold-light);
+    font-style: normal;
+    font-weight: 700;
+  }
+
+  .saju-main-quote .attr {
+    margin-top: 1.5rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    color: rgba(184,146,42,0.6);
+    font-family: 'Noto Sans KR', sans-serif;
+  }
+
+  @media (max-width: 600px) {
+    .saju-cards { grid-template-columns: 1fr; }
+    .saju-main-quote { padding: 2rem 1.5rem; }
+  }
+
+  /* LESSONS SECTION */
+  .lessons {
+    background: var(--cream);
+    padding: 6rem 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 5rem;
+  }
+
+  .section-num {
+    font-size: 0.7rem;
+    letter-spacing: 0.35em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    display: block;
+    font-weight: 500;
+  }
+
+  .section-title {
+    font-family: 'Noto Serif KR', serif;
+    font-size: clamp(1.6rem, 4vw, 2.4rem);
+    font-weight: 700;
+    color: var(--dark-brown);
+    line-height: 1.4;
+  }
+
+  .lesson-item {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 0 2.5rem;
+    margin-bottom: 4.5rem;
+    align-items: start;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .lesson-item.visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  .lesson-number {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 4rem;
+    font-weight: 900;
+    color: rgba(184,146,42,0.18);
+    line-height: 1;
+    text-align: right;
+    padding-top: 0.2rem;
+  }
+
+  .lesson-body {}
+
+  .lesson-tag {
+    display: inline-block;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    color: var(--rust);
+    text-transform: uppercase;
+    border: 1px solid rgba(139,58,26,0.3);
+    padding: 3px 10px;
+    margin-bottom: 0.8rem;
+    font-weight: 500;
+  }
+
+  .lesson-headline {
+    font-family: 'Noto Serif KR', serif;
+    font-size: clamp(1.3rem, 3vw, 1.8rem);
+    font-weight: 700;
+    color: var(--dark-brown);
+    margin-bottom: 1rem;
+    line-height: 1.4;
+  }
+
+  .lesson-text {
+    font-size: 0.95rem;
+    color: var(--warm-gray);
+    line-height: 1.9;
+    margin-bottom: 1.2rem;
+  }
+
+  .lesson-pullquote {
+    border-left: 3px solid var(--gold);
+    padding: 0.8rem 0 0.8rem 1.2rem;
+    font-family: 'Noto Serif KR', serif;
+    font-size: 1rem;
+    color: var(--dark-brown);
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.7;
+    background: rgba(184,146,42,0.04);
+  }
+
+  /* TIMELINE */
+  .timeline-section {
+    background: var(--dark-brown);
+    padding: 6rem 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .timeline-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 60px,
+      rgba(184,146,42,0.02) 60px,
+      rgba(184,146,42,0.02) 61px
+    );
+  }
+
+  .timeline-inner {
+    max-width: 700px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .timeline-title {
+    font-family: 'Noto Serif KR', serif;
+    font-size: clamp(1.4rem, 4vw, 2rem);
+    font-weight: 700;
+    color: var(--cream);
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .timeline-line {
+    position: absolute;
+    left: 90px;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, var(--gold) 10%, var(--gold) 90%, transparent);
+    opacity: 0.25;
+  }
+
+  .timeline-event {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 0 2rem;
+    margin-bottom: 2.5rem;
+    position: relative;
+  }
+
+  .timeline-event::before {
+    content: '';
+    position: absolute;
+    left: 84px;
+    top: 0.4rem;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    border: 2px solid var(--gold);
+    background: var(--dark-brown);
+  }
+
+  .timeline-year {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--gold);
+    text-align: right;
+    padding-top: 0.1rem;
+    line-height: 1.5;
+  }
+
+  .timeline-desc {
+    font-size: 1rem;
+    color: rgba(245,240,232,0.88);
+  }
+
+  .timeline-desc strong {
+    color: var(--cream);
+    font-weight: 500;
+    display: block;
+    margin-bottom: 0.2rem;
+  }
+
+  /* CLOSING */
+  .closing {
+    background: var(--rust);
+    padding: 7rem 2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .closing::before {
+    content: '"';
+    font-family: 'Noto Serif KR', serif;
+    font-size: 30rem;
+    font-weight: 900;
+    color: rgba(255,255,255,0.05);
+    position: absolute;
+    top: -5rem;
+    left: -2rem;
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  .closing-inner {
+    max-width: 600px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .closing-quote {
+    font-family: 'Noto Serif KR', serif;
+    font-size: clamp(1.6rem, 5vw, 2.8rem);
+    font-weight: 700;
+    color: var(--cream);
+    line-height: 1.5;
+    margin-bottom: 2.5rem;
+  }
+
+  .closing-sub {
+    font-size: 1rem;
+    color: rgba(245,240,232,0.88);
+    line-height: 2;
+    margin-bottom: 3rem;
+  }
+
+  .cta-badge {
+    display: inline-block;
+    border: 1px solid rgba(245,240,232,0.5);
+    color: var(--cream);
+    font-size: 0.8rem;
+    letter-spacing: 0.2em;
+    padding: 0.75rem 2rem;
+    text-transform: uppercase;
+    font-weight: 500;
+    transition: background 0.3s;
+    cursor: default;
+  }
+
+  .cta-badge:hover {
+    background: rgba(245,240,232,0.1);
+  }
+
+  /* SAJU SECTION */
+  .saju-section {
+    background: var(--parchment);
+    padding: 7rem 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .saju-section::before {
+    content: '命';
+    font-family: 'Noto Serif KR', serif;
+    font-size: 22rem;
+    font-weight: 900;
+    color: rgba(184,146,42,0.06);
+    position: absolute;
+    top: 50%;
+    right: -2rem;
+    transform: translateY(-50%);
+    pointer-events: none;
+    line-height: 1;
+  }
+
+  .saju-inner {
+    max-width: 780px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .saju-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 3rem;
+  }
+
+  .saju-eyebrow-line {
+    height: 1px;
+    width: 40px;
+    background: var(--gold);
+    opacity: 0.6;
+  }
+
+  .saju-eyebrow-text {
+    font-size: 0.7rem;
+    letter-spacing: 0.35em;
+    color: var(--gold);
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  .saju-headline {
+    font-family: 'Noto Serif KR', serif;
+    font-size: clamp(1.6rem, 4vw, 2.6rem);
+    font-weight: 700;
+    color: var(--dark-brown);
+    line-height: 1.5;
+    margin-bottom: 1rem;
+  }
+
+  .saju-headline em {
+    color: var(--rust);
+    font-style: normal;
+  }
+
+  .saju-subline {
+    font-size: 1rem;
+    color: var(--warm-gray);
+    margin-bottom: 3.5rem;
+    line-height: 1.9;
+  }
+
+  .saju-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5px;
+    margin-bottom: 3.5rem;
+    background: rgba(184,146,42,0.2);
+  }
+
+  .saju-card {
+    background: var(--cream);
+    padding: 2rem 1.8rem;
+  }
+
+  .saju-card-icon {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  .saju-card-title {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--dark-brown);
+    margin-bottom: 0.6rem;
+  }
+
+  .saju-card-text {
+    font-size: 0.95rem;
+    color: var(--warm-gray);
+    line-height: 1.85;
+  }
+
+  .saju-main-quote {
+    background: var(--dark-brown);
+    padding: 3rem 2.5rem;
+    position: relative;
+    margin-bottom: 2.5rem;
+  }
+
+  .saju-main-quote::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--gold);
+  }
+
+  .saju-main-quote-text {
+    font-family: 'Noto Serif KR', serif;
+    font-size: clamp(1.1rem, 2.5vw, 1.45rem);
+    font-weight: 400;
+    color: var(--cream);
+    line-height: 1.9;
+    margin-bottom: 1.5rem;
+  }
+
+  .saju-main-quote-text strong {
+    color: var(--gold-light);
+    font-weight: 700;
+  }
+
+  .saju-main-quote-attr {
+    font-size: 0.75rem;
+    color: rgba(184,146,42,0.6);
+    letter-spacing: 0.15em;
+  }
+
+  .saju-closing-line {
+    font-family: 'Noto Serif KR', serif;
+    font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+    font-weight: 700;
+    color: var(--dark-brown);
+    line-height: 1.7;
+    padding-left: 1.5rem;
+    border-left: 3px solid var(--rust);
+  }
+
+  @media (max-width: 600px) {
+    .saju-cards { grid-template-columns: 1fr; }
+    .saju-main-quote { padding: 2rem 1.5rem; }
+  }
+
+  /* GENERATION SECTION */
+  .gen-section {
+    background: var(--cream);
+    padding: 7rem 2rem;
+  }
+
+  .gen-inner {
+    max-width: 860px;
+    margin: 0 auto;
+  }
+
+  .gen-header {
+    text-align: center;
+    margin-bottom: 5rem;
+  }
+
+  .gen-header-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.35em;
+    color: var(--gold);
+    text-transform: uppercase;
+    font-weight: 500;
+    display: block;
+    margin-bottom: 1rem;
+  }
+
+  .gen-header-title {
+    font-family: 'Noto Serif KR', serif;
+    font-size: clamp(1.5rem, 4vw, 2.3rem);
+    font-weight: 700;
+    color: var(--dark-brown);
+    line-height: 1.5;
+  }
+
+  .gen-block {
+    margin-bottom: 5rem;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .gen-block.visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  .gen-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 1.4rem;
+  }
+
+  .gen-badge-age {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    padding: 4px 14px;
+    border: 1px solid;
+  }
+
+  .gen-badge-age.youth { color: var(--rust); border-color: rgba(139,58,26,0.35); background: rgba(139,58,26,0.04); }
+  .gen-badge-age.mid   { color: #1a4a6b; border-color: rgba(26,74,107,0.3); background: rgba(26,74,107,0.04); }
+  .gen-badge-age.senior{ color: #2d5a2d; border-color: rgba(45,90,45,0.3); background: rgba(45,90,45,0.04); }
+
+  .gen-badge-keyword {
+    font-size: 0.75rem;
+    color: var(--warm-gray);
+    letter-spacing: 0.1em;
+  }
+
+  .gen-title {
+    font-family: 'Noto Serif KR', serif;
+    font-size: clamp(1.3rem, 3vw, 1.9rem);
+    font-weight: 700;
+    color: var(--dark-brown);
+    line-height: 1.5;
+    margin-bottom: 1rem;
+  }
+
+  .gen-empathy {
+    font-size: 0.95rem;
+    color: var(--warm-gray);
+    line-height: 2;
+    margin-bottom: 1.8rem;
+    padding-left: 1rem;
+    border-left: 2px solid rgba(184,146,42,0.3);
+  }
+
+  .gen-tips {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1px;
+    background: rgba(184,146,42,0.15);
+    margin-bottom: 1.8rem;
+  }
+
+  .gen-tip {
+    background: var(--parchment);
+    padding: 1.4rem 1.5rem;
+  }
+
+  .gen-tip-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+  }
+
+  .gen-tip-label.youth { color: var(--rust); }
+  .gen-tip-label.mid   { color: #1a4a6b; }
+  .gen-tip-label.senior{ color: #2d5a2d; }
+
+  .gen-tip-text {
+    font-size: 0.95rem;
+    color: var(--ink);
+    line-height: 1.85;
+  }
+
+  .gen-quote {
+    background: var(--dark-brown);
+    padding: 1.8rem 2rem;
+    position: relative;
+  }
+
+  .gen-quote::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px; height: 100%;
+  }
+
+  .gen-quote.youth::before { background: var(--rust); }
+  .gen-quote.mid::before   { background: #1a4a6b; }
+  .gen-quote.senior::before{ background: #2d5a2d; }
+
+  .gen-quote-text {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 1rem;
+    color: var(--cream);
+    line-height: 1.9;
+    font-style: italic;
+  }
+
+  .gen-quote-text strong {
+    color: var(--gold-light);
+    font-style: normal;
+    font-weight: 700;
+  }
+
+  .gen-divider {
+    width: 100%;
+    height: 1px;
+    background: rgba(184,146,42,0.15);
+    margin-bottom: 5rem;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--ink);
+    padding: 2.5rem 2rem;
+    text-align: center;
+  }
+
+  footer p {
+    font-size: 0.75rem;
+    color: rgba(245,240,232,0.25);
+    letter-spacing: 0.1em;
+    line-height: 2;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: none; }
+  }
+
+  .hero-content > * {
+    animation: fadeUp 0.9s ease both;
+  }
+  .hero-label { animation-delay: 0.1s; }
+  .hero-title { animation-delay: 0.25s; }
+  .hero-sub { animation-delay: 0.4s; }
+  .hero-divider { animation-delay: 0.55s; }
+  .hero-dates { animation-delay: 0.65s; }
+
+  @media (max-width: 600px) {
+    .lesson-item {
+      grid-template-columns: 1fr;
+    }
+    .lesson-number {
+      text-align: left;
+      font-size: 2.5rem;
+    }
+    .timeline-line { left: 60px; }
+    .timeline-event { grid-template-columns: 55px 1fr; }
+    .timeline-event::before { left: 54px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-year">1915</div>
+  <div class="hero-content">
+    <p class="hero-label">정주영 회장의 삶과 철학</p>
+    <h1 class="hero-title">
+      해보기나<br>
+      <span>했어?</span>
+    </h1>
+    <p class="hero-sub">
+      무일푼의 소작농 아들에서 세계적 기업의 총수로.<br>
+      그의 인생이 우리에게 남긴 단 하나의 질문.
+    </p>
+    <div class="hero-divider"></div>
+    <p class="hero-dates">1915 — 2001</p>
+  </div>
+  <div class="scroll-hint">아래로</div>
+</section>
+
+<!-- INTRO QUOTE -->
+<section class="intro-section">
+  <blockquote class="big-quote">
+    "운이 없다고 생각하니까<br>
+    <em>운이 나빠지는 거야."</em>
+  </blockquote>
+  <p class="quote-attr">— 정주영, 현대그룹 명예회장</p>
+</section>
+
+<!-- LESSONS -->
+<section class="lessons">
+  <div class="section-header">
+    <span class="section-num">그가 남긴 네 가지 가르침</span>
+    <h2 class="section-title">돈복은 자세에서 온다</h2>
+  </div>
+
+  <div class="lesson-item">
+    <div class="lesson-number">01</div>
+    <div class="lesson-body">
+      <span class="lesson-tag">시도</span>
+      <h3 class="lesson-headline">길이 없으면 만들어라</h3>
+      <p class="lesson-text">
+        돈복이 없는 사람들은 새로운 기회 앞에서 '안 될 이유'를 먼저 찾습니다.
+        "경기가 안 좋아서", "자본이 부족해서", "나이가 많아서"라며 시작도 전에 포기합니다.
+        정주영 회장은 달랐습니다. 그는 확신 90%, 자신감 10%로 밀고 나갔습니다.
+        돈은 흐르는 물처럼, 멈춰 서 있는 사람에게는 결코 고이지 않습니다.
+      </p>
+      <blockquote class="lesson-pullquote">
+        "무슨 일이든 확신 90%와 자신감 10%로 밀고 나가라.<br>
+        안 될 수도 있다는 생각조차 하지 마라."
+      </blockquote>
+    </div>
+  </div>
+
+  <div class="lesson-item">
+    <div class="lesson-number">02</div>
+    <div class="lesson-body">
+      <span class="lesson-tag">회복</span>
+      <h3 class="lesson-headline">시련은 있어도 실패는 없다</h3>
+      <p class="lesson-text">
+        한두 번의 시련을 인생의 '실패'로 낙인찍고 주저앉는 순간, 진짜 실패가 시작됩니다.
+        그는 살아있는 한 실패란 없다고 믿었습니다. 포기할 때만 실패가 되는 것입니다.
+        시련을 공부의 과정으로 여기는 사람, 그가 현장에서 땀 흘리며 문제를 해결하는 사람이
+        결국 돈의 흐름을 자기편으로 만듭니다.
+      </p>
+      <blockquote class="lesson-pullquote">
+        "사업은 망해도 다시 일어설 수 있다.<br>
+        하지만 스스로를 불운한 존재로 낙인찍는 순간, 운은 당신을 떠난다."
+      </blockquote>
+    </div>
+  </div>
+
+  <div class="lesson-item">
+    <div class="lesson-number">03</div>
+    <div class="lesson-body">
+      <span class="lesson-tag">신용</span>
+      <h3 class="lesson-headline">돈보다 신용이 먼저다</h3>
+      <p class="lesson-text">
+        그가 죽기 전까지 강조한 자산은 통장의 숫자가 아닌 '신용'이었습니다.
+        당장의 작은 이익을 위해 약속을 어기고 지름길을 찾는 사람 곁에는
+        좋은 사람도, 좋은 돈도 머물지 않습니다.
+        큰 부는 반드시 '사람'을 타고 옵니다.
+      </p>
+      <blockquote class="lesson-pullquote">
+        "사업은 망해도 다시 일어설 수 있지만,<br>
+        신용은 한 번 잃으면 그것으로 끝이다."
+      </blockquote>
+    </div>
+  </div>
+
+  <div class="lesson-item">
+    <div class="lesson-number">04</div>
+    <div class="lesson-body">
+      <span class="lesson-tag">시간</span>
+      <h3 class="lesson-headline">시간을 헛되이 쓰는 것만큼 우매한 일은 없다</h3>
+      <p class="lesson-text">
+        "나중에 하지 뭐"라며 미루거나, 의미 없는 고민으로 시간을 허비하는 사람은
+        가장 귀한 자산을 스스로 버리고 있습니다.
+        부지런함이란 몸을 많이 움직이는 것이 아니라,
+        깨어 있는 의식으로 매 순간을 경영하는 것입니다.
+      </p>
+      <blockquote class="lesson-pullquote">
+        "세상에서 가장 귀중한 시간을 헛되이 쓰는 것만큼<br>
+        우매한 것은 없다."
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section class="timeline-section">
+  <div class="timeline-inner">
+    <h2 class="timeline-title">무일푼에서 세계로</h2>
+    <div style="position: relative;">
+      <div class="timeline-line"></div>
+
+      <div class="timeline-event">
+        <div class="timeline-year">1915</div>
+        <div class="timeline-desc">
+          <strong>강원도 통천에서 태어나다</strong>
+          소작농의 여섯 형제 중 장남. 가난이 당연한 시절이었다.
+        </div>
+      </div>
+
+      <div class="timeline-event">
+        <div class="timeline-year">1930년대</div>
+        <div class="timeline-desc">
+          <strong>가출과 노동의 시작</strong>
+          네 번의 가출. 인천 부두, 서울 쌀가게 배달부로 생계를 이어가다.
+        </div>
+      </div>
+
+      <div class="timeline-event">
+        <div class="timeline-year">1940</div>
+        <div class="timeline-desc">
+          <strong>아도서비스 인수</strong>
+          자동차 수리업으로 첫 사업을 시작. '될 때까지 한다'는 원칙.
+        </div>
+      </div>
+
+      <div class="timeline-event">
+        <div class="timeline-year">1947</div>
+        <div class="timeline-desc">
+          <strong>현대토건사 설립</strong>
+          건설업에 뛰어들다. 전쟁의 폐허 위에서 기회를 보았다.
+        </div>
+      </div>
+
+      <div class="timeline-event">
+        <div class="timeline-year">1970년대</div>
+        <div class="timeline-desc">
+          <strong>중동 건설 신화</strong>
+          모래 위에 항구를 짓고, 사막에 도시를 세우다. 세계가 놀랐다.
+        </div>
+      </div>
+
+      <div class="timeline-event">
+        <div class="timeline-year">1976</div>
+        <div class="timeline-desc">
+          <strong>현대조선 — 거북선으로 수주하다</strong>
+          조선소도 없이 500원짜리 지폐를 보여주며 수주를 따낸 전설.
+        </div>
+      </div>
+
+      <div class="timeline-event">
+        <div class="timeline-year">1998</div>
+        <div class="timeline-desc">
+          <strong>소 1,001마리와 함께 판문점을 넘다</strong>
+          분단의 벽을 넘은 민간인. 그의 방식은 언제나 '직접 움직이는 것'.
+        </div>
+      </div>
+
+      <div class="timeline-event">
+        <div class="timeline-year">2001</div>
+        <div class="timeline-desc">
+          <strong>향년 85세, 별세</strong>
+          그가 남긴 질문은 오늘도 살아있다. "해보기나 했어?"
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SAJU MESSAGE -->
+<section class="saju-section">
+  <div class="saju-inner">
+    <div class="saju-eyebrow">
+      <div class="saju-eyebrow-line"></div>
+      <span class="saju-eyebrow-text">사주를 보는 당신에게</span>
+    </div>
+
+    <h2 class="saju-headline">
+      사주가 좋다고 돈이 오는 게 아니고,<br>
+      <em>사주가 나쁘다고 돈이 막히는 게 아닙니다.</em>
+    </h2>
+    <p class="saju-subline">
+      운이란 것도 마찬가지입니다. 사주는 흐름을 보여줄 뿐,<br>
+      그 흐름을 타는 것은 오직 당신의 자세에 달려 있습니다.
+    </p>
+
+    <div class="saju-cards">
+      <div class="saju-card">
+        <span class="saju-card-icon">🗺</span>
+        <div class="saju-card-title">사주는 지도입니다</div>
+        <p class="saju-card-text">지도가 아무리 좋아도 걷지 않으면 목적지에 닿을 수 없습니다. 사주는 방향을 알려줄 뿐, 발을 움직이는 건 당신입니다.</p>
+      </div>
+      <div class="saju-card">
+        <span class="saju-card-icon">💧</span>
+        <div class="saju-card-title">운은 흐르는 물입니다</div>
+        <p class="saju-card-text">멈춰 서 있는 사람에게는 아무리 좋은 운도 그냥 지나쳐 갑니다. 움직이는 사람 곁에 운도 머뭅니다.</p>
+      </div>
+      <div class="saju-card">
+        <span class="saju-card-icon">⚖️</span>
+        <div class="saju-card-title">사주가 좋아도</div>
+        <p class="saju-card-text">가만히 기다리기만 하면 기회는 스쳐 지나갑니다. 좋은 운을 타려면 먼저 내가 그 흐름 안에 있어야 합니다.</p>
+      </div>
+      <div class="saju-card">
+        <span class="saju-card-icon">🔥</span>
+        <div class="saju-card-title">사주가 나빠도</div>
+        <p class="saju-card-text">신용을 지키고, 성실하게 움직이며, 포기하지 않는 사람에게는 반드시 돌파구가 생깁니다. 자세가 운명을 바꿉니다.</p>
+      </div>
+    </div>
+
+    <div class="saju-main-quote">
+      <p class="saju-main-quote-text">
+        돈은 흐르는 물과 같아서 <strong>멈춰 서 있는 사람에게는 고이지 않습니다.</strong><br><br>
+        돈복을 타고난 사람은 길이 없으면 길을 찾고, 찾아도 없으면 길을 직접 닦아 나가는 사람입니다.<br><br>
+        가만히 앉아 운이 오기만을 기다리는 것이야말로 사람을 가장 멍청하게 만들고,
+        <strong>평생 가난하게 만드는 주범입니다.</strong>
+      </p>
+      <p class="saju-main-quote-attr">— 정주영 회장의 철학에서</p>
+    </div>
+
+    <p class="saju-closing-line">
+      오늘 본 사주, 좋은 방향의 힌트로만 삼으세요.<br>
+      확신을 갖고 움직이는 것이 어떤 사주보다 강합니다.
+    </p>
+  </div>
+</section>
+
+<!-- GENERATION SECTION -->
+<section class="gen-section">
+  <div class="gen-inner">
+
+    <div class="gen-header">
+      <span class="gen-header-label">세대별 메시지</span>
+      <h2 class="gen-header-title">위기는 모두에게 왔습니다.<br>돌파하는 방식은 각자 다릅니다.</h2>
+    </div>
+
+    <!-- 청년 -->
+    <div class="gen-block">
+      <div class="gen-badge">
+        <span class="gen-badge-age youth">20 · 30대</span>
+        <span class="gen-badge-keyword">· 되면 한다 세대에게</span>
+      </div>
+      <h3 class="gen-title">"확실해지면 하겠다"는 말은<br>영원히 시작하지 않겠다는 말입니다.</h3>
+      <p class="gen-empathy">
+        물질은 풍요로워졌지만 기회는 좁아졌고, 실력은 쌓였지만 쓸 곳이 없다는 느낌. 충분히 이해합니다.
+        취업은 어렵고, 집값은 하늘이고, 노력해도 안 되는 것들이 보입니다.
+        하지만 "되면 한다"는 자세는 기다리는 것이 아니라 — 포기를 미루고 있는 것일 수 있습니다.
+      </p>
+      <div class="gen-tips">
+        <div class="gen-tip">
+          <div class="gen-tip-label youth">체력이 있을 때</div>
+          <p class="gen-tip-text">실패해도 회복할 수 있는 나이입니다. 지금의 시도가 10년 후의 노하우가 됩니다. 작게라도 먼저 해보는 것이 이 시기의 가장 큰 자산입니다.</p>
+        </div>
+        <div class="gen-tip">
+          <div class="gen-tip-label youth">일하는 방식이 다양해졌습니다</div>
+          <p class="gen-tip-text">프리랜서, 1인 창업, 디지털 노마드, 콘텐츠 크리에이터. 과거엔 없던 길이 지금은 있습니다. 고정된 길만 길이 아닙니다.</p>
+        </div>
+        <div class="gen-tip">
+          <div class="gen-tip-label youth">작은 신용부터</div>
+          <p class="gen-tip-text">약속을 지키고, 맡은 일을 끝까지 하는 것. 이것이 쌓이면 사람이 모이고, 사람이 모이면 기회가 옵니다. 신용은 스펙보다 오래갑니다.</p>
+        </div>
+      </div>
+      <div class="gen-quote youth">
+        <p class="gen-quote-text">
+          정주영은 스물셋에 가출해서 막노동으로 시작했습니다.<br>
+          <strong>"길이 없으면 만들면 된다"</strong>는 말은, 그가 먼저 그렇게 살았기 때문에 할 수 있는 말이었습니다.<br>
+          완벽한 조건은 오지 않습니다. 지금, 작게, 한 발만 내딛으세요.
+        </p>
+      </div>
+    </div>
+
+    <div class="gen-divider"></div>
+
+    <!-- 40~50대 -->
+    <div class="gen-block">
+      <div class="gen-badge">
+        <span class="gen-badge-age mid">40 · 50대</span>
+        <span class="gen-badge-keyword">· 조기퇴직, 제2의 출발점에 선 당신에게</span>
+      </div>
+      <h3 class="gen-title">끝난 게 아닙니다.<br>드디어 당신만의 시간이 시작된 겁니다.</h3>
+      <p class="gen-empathy">
+        20~30년을 조직을 위해 쏟아부었는데, 어느 날 갑자기 손에 쥔 건 퇴직금 하나.
+        막막하고, 억울하고, 두렵습니다. 하지만 당신에게는 청년이 가지지 못한 것들이 있습니다.
+        경험, 노하우, 인간관계, 그리고 무엇이 진짜인지 아는 눈 — 이것은 절대 작은 게 아닙니다.
+      </p>
+      <div class="gen-tips">
+        <div class="gen-tip">
+          <div class="gen-tip-label mid">경험이 곧 콘텐츠입니다</div>
+          <p class="gen-tip-text">당신이 30년간 쌓은 업무 노하우, 실수담, 성공 방식은 누군가에게 간절한 정보입니다. 강의, 컨설팅, 글쓰기로 충분히 수익화할 수 있습니다.</p>
+        </div>
+        <div class="gen-tip">
+          <div class="gen-tip-label mid">체력 관리가 전략입니다</div>
+          <p class="gen-tip-text">100세 시대, 40~50대는 딱 중간입니다. 지금 건강에 투자하는 것이 향후 30년을 결정합니다. 일할 수 있는 몸이 가장 큰 자본입니다.</p>
+        </div>
+        <div class="gen-tip">
+          <div class="gen-tip-label mid">작게 다시 시작하세요</div>
+          <p class="gen-tip-text">큰 사업 말고, 소규모 1인 사업부터. 내가 잘 아는 분야에서, 내가 믿는 사람들과, 작은 규모로 먼저 검증하는 것이 이 시기의 방식입니다.</p>
+        </div>
+      </div>
+      <div class="gen-quote mid">
+        <p class="gen-quote-text">
+          정주영은 사업을 몇 번이나 접고 다시 시작했습니다.<br>
+          <strong>"시련은 있어도 실패는 없다"</strong> — 포기할 때만 실패가 됩니다.<br>
+          퇴직은 끝이 아니라, 조직의 울타리를 벗어나 진짜 나로 살기 시작하는 시점입니다.
+        </p>
+      </div>
+    </div>
+
+    <div class="gen-divider"></div>
+
+    <!-- 60~70대 -->
+    <div class="gen-block">
+      <div class="gen-badge">
+        <span class="gen-badge-age senior">60 · 70대</span>
+        <span class="gen-badge-keyword">· 100세 시대, 아직 절반이 남은 당신에게</span>
+      </div>
+      <h3 class="gen-title">"이 나이에 뭘 하겠어"라는 말이<br>당신의 가장 큰 적입니다.</h3>
+      <p class="gen-empathy">
+        몸은 예전 같지 않고, 세상은 너무 빠르게 변하고, 젊은 사람들 사이에서 뒤처지는 기분.
+        하지만 생각해보세요 — 당신에게는 살아온 세월만큼의 지혜가 있습니다.
+        실패도 성공도 겪어봤고, 사람을 볼 줄 알고, 기다릴 줄 압니다. 이것은 어떤 스펙으로도 살 수 없는 것입니다.
+      </p>
+      <div class="gen-tips">
+        <div class="gen-tip">
+          <div class="gen-tip-label senior">건강이 있으면 시간이 있습니다</div>
+          <p class="gen-tip-text">60대에 시작해 70대에 꽃 피운 사람들이 있습니다. 무리하지 않는 선에서, 내가 좋아하는 것, 잘 아는 것으로 천천히 시작하면 됩니다.</p>
+        </div>
+        <div class="gen-tip">
+          <div class="gen-tip-label senior">노하우를 나누세요</div>
+          <p class="gen-tip-text">멘토링, 커뮤니티 활동, 손자·손녀 세대와의 연결. 당신의 경험담 하나가 누군가의 인생을 바꿀 수 있습니다. 나눔이 곧 활력입니다.</p>
+        </div>
+        <div class="gen-tip">
+          <div class="gen-tip-label senior">고정관념을 버리세요</div>
+          <p class="gen-tip-text">유튜브, 블로그, 소셜미디어 — 어렵지 않습니다. 배우겠다는 마음 하나면 됩니다. 새로운 것을 배우는 뇌는 나이 들지 않습니다.</p>
+        </div>
+      </div>
+      <div class="gen-quote senior">
+        <p class="gen-quote-text">
+          정주영은 일흔이 넘은 나이에 소 1,001마리를 몰고 판문점을 넘었습니다.<br>
+          <strong>"해보기나 했어?"</strong> — 나이는 그에게 핑계가 되지 않았습니다.<br>
+          60세, 70세에도 인생이 환하게 피는 사람들의 공통점은 단 하나 — 지금 이 순간도 움직인다는 것입니다.
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CLOSING -->
+<section class="closing">
+  <div class="closing-inner">
+    <blockquote class="closing-quote">
+      "고정관념을 버리고<br>지금 당장 움직이십시오."
+    </blockquote>
+    <p class="closing-sub">
+      60세, 70세가 넘었어도 인생을 환하게 피게 만드는 비결은<br>
+      스스로에게 이 질문을 던지는 것입니다.<br><br>
+      신용을 지키고, 사람을 귀하게 여기며,<br>
+      오늘 하루를 혼신의 힘을 다해 살아가는 사람에게<br>
+      돈복은 반드시 찾아옵니다.
+    </p>
+    <div class="cta-badge">해보기나 했어?</div>
+  </div>
+</section>
+
+<footer>
+  <p>정주영 鄭周永 · 1915 – 2001<br>
+  현대그룹 창업자 · 대한민국 경제사의 거인</p>
+</footer>
+
+<script>
+  const items = document.querySelectorAll('.lesson-item, .saju-inner, .gen-block');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 120);
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  items.forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
